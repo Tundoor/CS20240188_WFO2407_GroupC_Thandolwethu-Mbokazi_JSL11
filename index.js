@@ -23,7 +23,7 @@ initializeData()
 const elements = {
 
   headerBoardName: document.getElementById("header-board-name"),
-  columnDivs: document.getElementsByClassName("column-div"),
+  columnDivs: document.querySelectorAll("column-div"),
   editTaskModal: document.querySelector("edit-task-modal-window"),
   filterDiv: document.getElementById("filterDiv"),
   hideSideBarBtn : document.getElementById("hide-side-bar-btn"),
@@ -74,15 +74,14 @@ function displayBoards(boards) {
 
 }
 
+
 // Filters tasks corresponding to the board name and displays them on the DOM.
 // TASK: Fix Bugs
 function filterAndDisplayTasksByBoard(boardName) {
   const tasks = getTasks(); // Fetch tasks from a simulated local storage function
   const filteredTasks = tasks.filter(task => task.board === boardName);
 
-  // Ensure the column titles are set outside of this function or correctly initialized before this function runs
-
-
+  
   elements.columnDivs.forEach(column => {
     const status = column.getAttribute("data-status");
     // Reset column content while preserving the column title
@@ -208,9 +207,12 @@ function addTask(event) {
 
   //Assign user input to the task object
     const task = {
-            
-      
-    };
+           title : document.getElementById("title-input"),
+           desc: document.getElementById("desc-input"),
+           stausDropDown : document.getElementById("modal-select-status")
+      };
+
+
     const newTask = createNewTask(task);
     if (newTask) {
       addTaskToUI(newTask);
@@ -229,7 +231,11 @@ function toggleSidebar(show) {
 }
 
 function toggleTheme() {
- 
+  if (document.body.classList.contains('light-theme')) {
+    document.body.classList.remove('light-theme');  // If light-theme is present, remove it (dark mode)
+  } else {
+    document.body.classList.add('light-theme');  // If light-theme is not present, add it (light mode)
+  }
 }
 
 
