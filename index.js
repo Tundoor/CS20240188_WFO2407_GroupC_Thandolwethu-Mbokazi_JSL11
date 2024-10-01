@@ -51,7 +51,7 @@ function fetchAndDisplayBoardsAndTasks() {
   }
 }
 
-console.log(fetchAndDisplayBoardsAndTasks)
+
 
 // Creates different boards in the DOM
 // TASK: Fix Bugs
@@ -131,28 +131,28 @@ function styleActiveBoard(boardName) {
 }
 
 
-// function addTaskToUI(task) {
-//   const column = document.querySelector('.column-div[data-status="${task.status}"]'); 
-//   if (!column) {
-//     console.error(`Column not found for status: ${task.status}`);
-//     return;
-//   }
+function addTaskToUI(task) {
+  const column = document.querySelector(`.column-div[data-status="${task.status}"]`); 
+  if (!column) {
+    console.error(`Column not found for status: ${task.status}`);
+    return;
+  }
 
-//   let tasksContainer = column.querySelector('.tasks-container');
-//   if (!tasksContainer) {
-//     console.warn(`Tasks container not found for status: ${task.status}, creating one.`);
-//     tasksContainer = document.createElement('div');
-//     tasksContainer.className = 'tasks-container';
-//     column.appendChild(tasksContainer);
-//   }
+  let tasksContainer = column.querySelector('.tasks-container');
+  if (!tasksContainer) {
+    console.warn(`Tasks container not found for status: ${task.status}, creating one.`);
+    tasksContainer = document.createElement('div');
+    tasksContainer.className = 'tasks-container';
+    column.appendChild(tasksContainer);
+  }
 
-//   const taskElement = document.createElement('div');
-//   taskElement.className = 'task-div';
-//   taskElement.textContent = task.title; // Modify as needed
-//   taskElement.setAttribute('data-task-id', task.id);
+  const taskElement = document.createElement('div');
+  taskElement.className = 'task-div';
+  taskElement.textContent = task.title; // Modify as needed
+  taskElement.setAttribute('data-task-id', task.id);
   
-//   tasksContainer.appendChild(); 
-// }
+  tasksContainer.appendChild(taskElement); 
+}
 
 
 
@@ -264,15 +264,15 @@ function styleActiveBoard(boardName) {
 
 // /*************************************************************************************************************************************************/
 
-// document.addEventListener('DOMContentLoaded', function() {
-//   init(); // init is called after the DOM is fully loaded
-// });
+document.addEventListener('DOMContentLoaded', function() {
+  init(); // init is called after the DOM is fully loaded
+});
 
-// function init() {
-//   setupEventListeners();
-//   const showSidebar = localStorage.getItem('showSideBar') === 'true';
-//   toggleSidebar(showSidebar);
-//   const isLightTheme = localStorage.getItem('light-theme') === 'enabled';
-//   document.body.classList.toggle('light-theme', isLightTheme);
-//   fetchAndDisplayBoardsAndTasks(); // Initial display of boards and tasks
-// }
+function init() {
+  setupEventListeners();
+  const showSidebar = localStorage.getItem('showSideBar') === 'true';
+  toggleSidebar(showSidebar);
+  const isLightTheme = localStorage.getItem('light-theme') === 'enabled';
+  document.body.classList.toggle('light-theme', isLightTheme);
+  fetchAndDisplayBoardsAndTasks(); // Initial display of boards and tasks
+}
