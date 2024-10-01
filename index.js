@@ -203,64 +203,67 @@ function toggleModal(show, modal = elements.modalWindow) {
 //  * COMPLETE FUNCTION CODE
 //  * **********************************************************************************************************************************************/
 
-// function addTask(event) {
-//   event.preventDefault(); 
+function addTask(event) {
+  event.preventDefault(); 
 
-//   //Assign user input to the task object
-//     const task = {
+  //Assign user input to the task object
+    const task = {
+            
       
-//     };
-//     const newTask = createNewTask(task);
-//     if (newTask) {
-//       addTaskToUI(newTask);
-//       toggleModal(false);
-//       elements.filterDiv.style.display = 'none'; // Also hide the filter overlay
-//       event.target.reset();
-//       refreshTasksUI();
-//     }
-// }
+    };
+    const newTask = createNewTask(task);
+    if (newTask) {
+      addTaskToUI(newTask);
+      toggleModal(false);
+      elements.filterDiv.style.display = 'none'; // Also hide the filter overlay
+      event.target.reset();
+      refreshTasksUI();
+    }
+}
 
+// toggles the sideBar
+function toggleSidebar(show) {
+     let sideBar = document.getElementById("side-bar-div")
+     sideBar.style.display = show ? "block" : "none"
+     
+}
 
-// function toggleSidebar(show) {
+function toggleTheme() {
  
-// }
-
-// function toggleTheme() {
- 
-// }
+}
 
 
 
-// function openEditTaskModal(task) {
-//   // Set task details in modal inputs
+function openEditTaskModal(task) {
+  // Set task details in modal inputs
   
 
-//   // Get button elements from the task modal
+  // Get button elements from the task modal
 
 
-//   // Call saveTaskChanges upon click of Save Changes button
+  // Call saveTaskChanges upon click of Save Changes button
  
 
-//   // Delete task using a helper function and close the task modal
+  // Delete task using a helper function and close the task modal
 
 
-//   toggleModal(true, elements.editTaskModal); // Show the edit task modal
-// }
+  toggleModal(true, elements.editTaskModal); // Show the edit task modal
+}
 
-// function saveTaskChanges(taskId) {
-//   // Get new user inputs
+function saveTaskChanges(taskId) {
+  // Get new user inputs
   
 
-//   // Create an object with the updated task details
+  // Create an object with the updated task details
 
 
-//   // Update task using a hlper functoin
+  // Update task using a hlper functoin
  
 
-//   // Close the modal and refresh the UI to reflect the changes
+  // Close the modal and refresh the UI to reflect the changes
 
-//   refreshTasksUI();
-// }
+  refreshTasksUI();
+}
 
 // /*************************************************************************************************************************************************/
 
