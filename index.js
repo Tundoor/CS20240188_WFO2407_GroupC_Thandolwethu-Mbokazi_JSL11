@@ -109,7 +109,7 @@ function filterAndDisplayTasksByBoard(boardName) {
     });
   });
 }
- console.log(filterAndDisplayTasksByBoard)
+
 
 
 function refreshTasksUI() {
@@ -156,48 +156,48 @@ function addTaskToUI(task) {
 
 
 
-// function setupEventListeners() {
-//   // Cancel editing task event listener
-//   const cancelEditBtn = document.getElementById('cancel-edit-btn');
-//   cancelEditBtn.click() => toggleModal(false, elements.editTaskModal));
+function setupEventListeners() {
+  // Cancel editing task event listener
+  const cancelEditBtn = document.getElementById('cancel-edit-btn');
+  cancelEditBtn.addEventListener("click", () => toggleModal(false, elements.editTaskModal));
 
-//   // Cancel adding new task event listener
-//   const cancelAddTaskBtn = document.getElementById('cancel-add-task-btn');
-//   cancelAddTaskBtn.addEventListener('click', () => {
-//     toggleModal(false);
-//     elements.filterDiv.style.display = 'none'; // Also hide the filter overlay
-//   });
+  // Cancel adding new task event listener
+  const cancelAddTaskBtn = document.getElementById('cancel-add-task-btn');
+  cancelAddTaskBtn.addEventListener('click', () => {
+    toggleModal(false);
+    elements.filterDiv.style.display = 'none'; // Also hide the filter overlay
+  });
 
-//   // Clicking outside the modal to close it
-//   elements.filterDiv.addEventListener('click', () => {
-//     toggleModal(false);
-//     elements.filterDiv.style.display = 'none'; // Also hide the filter overlay
-//   });
+  // Clicking outside the modal to close it
+  elements.filterDiv.addEventListener('click', () => {
+    toggleModal(false);
+    elements.filterDiv.style.display = 'none'; // Also hide the filter overlay
+  });
 
-//   // Show sidebar event listener
-//   elements.hideSideBarBtn.click() => toggleSidebar(false));
-//   elements.showSideBarBtn.click() => toggleSidebar(true));
+  // Show sidebar event listener
+  elements.hideSideBarBtn.addEventListener("click" , ()=> toggleSidebar(false));
+  elements.showSideBarBtn.addEventListener("click" ,() => toggleSidebar(true));
 
-//   // Theme switch event listener
-//   elements.themeSwitch.addEventListener('change', toggleTheme);
+  // Theme switch event listener
+  elements.themeSwitch.addEventListener('change', toggleTheme);
 
-//   // Show Add New Task Modal event listener
-//   elements.createNewTaskBtn.addEventListener('click', () => {
-//     toggleModal(true);
-//     elements.filterDiv.style.display = 'block'; // Also show the filter overlay
-//   });
+  // Show Add New Task Modal event listener
+  elements.createNewTaskBtn.addEventListener('click', () => {
+    toggleModal(true);
+    elements.filterDiv.style.display = 'block'; // Also show the filter overlay
+  });
 
-//   // Add new task form submission event listener
-//   elements.modalWindow.addEventListener('submit',  (event) => {
-//     addTask(event)
-//   });
-// }
+  // Add new task form submission event listener
+  elements.modalWindow.addEventListener('submit',  (event) => {
+    addTask(event)
+  });
+}
 
-// // Toggles tasks modal
-// // Task: Fix bugs
-// function toggleModal(show, modal = elements.modalWindow) {
-//   modal.style.display = show ? 'block' => 'none'; 
-// }
+// Toggles tasks modal
+// Task: Fix bugs
+function toggleModal(show, modal = elements.modalWindow) {
+  modal.style.display = show ? 'block' : 'none'; 
+}
 
 // /*************************************************************************************************************************************************
 //  * COMPLETE FUNCTION CODE
