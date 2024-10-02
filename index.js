@@ -23,14 +23,14 @@ initializeData()
 const elements = {
 
   headerBoardName: document.getElementById("header-board-name"),
-  columnDivs: document.querySelectorAll("column-div"),
-  editTaskModal: document.querySelector("edit-task-modal-window"),
+  columnDivs: document.querySelectorAll(".column-div"),
+  modalWindow: document.getElementById("new-task-modal-window"),
+  editTaskModal: document.querySelector(".edit-task-modal-window"),
   filterDiv: document.getElementById("filterDiv"),
   hideSideBarBtn : document.getElementById("hide-side-bar-btn"),
   showSideBarBtn: document.getElementById("show-side-bar-btn"),
   themeSwitch: document.getElementById("switch"),
   createNewTaskBtn: document.getElementById("create-task-btn"),
-  modalWindow: document.getElementById("new-task-modal-window")
 
 }
 
@@ -112,7 +112,7 @@ function filterAndDisplayTasksByBoard(boardName) {
 
 
 function refreshTasksUI() {
-  filterAndDisplayTasksByBoard(activeBoard);
+ return filterAndDisplayTasksByBoard(activeBoard);
 }
 
 // Styles the active board by adding an active class
@@ -195,6 +195,7 @@ function setupEventListeners() {
 // Toggles tasks modal
 // Task: Fix bugs
 function toggleModal(show, modal = elements.modalWindow) {
+  console.log('Modal:', modal)
   modal.style.display = show ? 'block' : 'none'; 
 }
 
@@ -209,8 +210,10 @@ function addTask(event) {
     const task = {
            title : document.getElementById("title-input"),
            desc: document.getElementById("desc-input"),
-           stausDropDown : document.getElementById("modal-select-status")
-      };
+           statusDropDown : document.getElementById("modal-select-status"),
+           
+
+          };
 
 
     const newTask = createNewTask(task);
@@ -245,10 +248,15 @@ function openEditTaskModal(task) {
   
 
   // Get button elements from the task modal
+  let cancelEditBtn = document.getElementById("cancel-edit-btn")
+  let deleteTaskBtn = document.getElementById("delete-task-btn")
+  let saveTaskChangesBtn = document.getElementById("save-task-changes-btn")
 
 
   // Call saveTaskChanges upon click of Save Changes button
- 
+  task.saveTaskChangesBtn.addEventListener("click", () => {
+  saveTaskChanges()  
+ })
 
   // Delete task using a helper function and close the task modal
 
