@@ -17,7 +17,6 @@ function initializeData() {
   }
 }
 
-initializeData()
 
 // TASK: Get elements from the DOM
 const elements = {
@@ -30,7 +29,7 @@ const elements = {
   hideSideBarBtn : document.getElementById("hide-side-bar-btn"),
   showSideBarBtn: document.getElementById("show-side-bar-btn"),
   themeSwitch: document.getElementById("switch"),
-  createNewTaskBtn: document.getElementById("create-task-btn"),
+  createNewTaskBtn: document.getElementById("add-new-task-btn"),
 
 }
 
@@ -112,7 +111,7 @@ function filterAndDisplayTasksByBoard(boardName) {
 
 
 function refreshTasksUI() {
- return filterAndDisplayTasksByBoard(activeBoard);
+ filterAndDisplayTasksByBoard(activeBoard);
 }
 
 // Styles the active board by adding an active class
@@ -175,7 +174,7 @@ function setupEventListeners() {
 
   // Show sidebar event listener
   elements.hideSideBarBtn.addEventListener("click" , ()=> toggleSidebar(false));
-  elements.showSideBarBtn.addEventListener("click" ,() => toggleSidebar(true));
+  elements.showSideBarBtn.addEventListener("click" , () => toggleSidebar(true));
 
   // Theme switch event listener
   elements.themeSwitch.addEventListener('change', toggleTheme);
@@ -192,12 +191,11 @@ function setupEventListeners() {
   });
 }
 
-// Toggles tasks modal
+// Toggles add tasks modal
 // Task: Fix bugs
 function toggleModal(show, modal = elements.modalWindow) {
-  console.log('Modal:', modal)
   modal.style.display = show ? 'block' : 'none'; 
-}
+  }
 
 // /*************************************************************************************************************************************************
 //  * COMPLETE FUNCTION CODE
@@ -205,7 +203,6 @@ function toggleModal(show, modal = elements.modalWindow) {
 
 function addTask(event) {
   event.preventDefault(); 
-
   //Assign user input to the task object
     const task = {
            title : document.getElementById("title-input"),
@@ -213,7 +210,7 @@ function addTask(event) {
            statusDropDown : document.getElementById("modal-select-status"),
            
 
-          };
+           };
 
 
     const newTask = createNewTask(task);
@@ -254,12 +251,12 @@ function openEditTaskModal(task) {
 
 
   // Call saveTaskChanges upon click of Save Changes button
-  task.saveTaskChangesBtn.addEventListener("click", () => {
+ saveTaskChangesBtn.addEventListener("click", () => {
   saveTaskChanges()  
  })
 
-  // Delete task using a helper function and close the task modal
-
+ // Delete task using a helper function and close the task modal
+ 
 
   toggleModal(true, elements.editTaskModal); // Show the edit task modal
 }
