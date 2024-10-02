@@ -229,13 +229,14 @@ function addTask(event) {
 // toggles the sideBar
 function toggleSidebar(show) {
      let sideBar = document.getElementById("side-bar-div")
+     let showSideBarBtn = document.getElementById("show-side-bar-btn")
      if (show) {
-      document.getElementById("show-side-bar-btn").style.display = "none"
+      showSideBarBtn.style.display = "none"
       sideBar.style.display = "block"
       
      } else {
       sideBar.style.display = "none"
-      document.getElementById("show-side-bar-btn").style.display = "block"
+      showSideBarBtn.style.display = "block"
      }
     
      
@@ -243,12 +244,14 @@ function toggleSidebar(show) {
 }
 
 function toggleTheme() {
+ let logo = document.getElementById("logo")
   if (document.body.classList.contains('light-theme')) {
     document.body.classList.remove('light-theme');  // If light-theme is present, remove it (dark mode)
-    
+    logo.src = './assets/logo-dark.svg'
 
   } else {
     document.body.classList.add('light-theme');  // If light-theme is not present, add it (light mode)
+     logo.src = './assets/logo-light.svg'
   }
 }
 
