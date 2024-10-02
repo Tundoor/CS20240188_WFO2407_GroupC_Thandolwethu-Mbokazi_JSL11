@@ -80,9 +80,11 @@ function filterAndDisplayTasksByBoard(boardName) {
   const tasks = getTasks(); // Fetch tasks from a simulated local storage function
   const filteredTasks = tasks.filter(task => task.board === boardName);
 
-  
+  // Ensure the column titles are set outside of this function or correctly initialized before this function runs
+
   elements.columnDivs.forEach(column => {
     const status = column.getAttribute("data-status");
+    
     // Reset column content while preserving the column title
     column.innerHTML = `<div class="column-head-div">
                           <span class="dot" id="${status}-dot"></span>
@@ -131,6 +133,7 @@ function styleActiveBoard(boardName) {
 
 function addTaskToUI(task) {
   const column = document.querySelector(`.column-div[data-status="${task.status}"]`); 
+
   if (!column) {
     console.error(`Column not found for status: ${task.status}`);
     return;
@@ -205,14 +208,14 @@ function addTask(event) {
   event.preventDefault(); 
   //Assign user input to the task object
     const task = {
-           title : document.getElementById("title-input"),
-           desc: document.getElementById("desc-input"),
-           statusDropDown : document.getElementById("modal-select-status"),
-           
+           'title' : document.getElementById("title-input").value,
+           'description' : document.getElementById("desc-input").value,
+           'status' : document.getElementById("select-status").value,
+           'board' :  activeBoard
 
            };
 
-
+    
     const newTask = createNewTask(task);
     if (newTask) {
       addTaskToUI(newTask);
@@ -228,11 +231,14 @@ function toggleSidebar(show) {
      let sideBar = document.getElementById("side-bar-div")
      sideBar.style.display = show ? "block" : "none"
      
+     
 }
 
 function toggleTheme() {
   if (document.body.classList.contains('light-theme')) {
     document.body.classList.remove('light-theme');  // If light-theme is present, remove it (dark mode)
+    
+
   } else {
     document.body.classList.add('light-theme');  // If light-theme is not present, add it (light mode)
   }
@@ -242,21 +248,28 @@ function toggleTheme() {
 
 function openEditTaskModal(task) {
   // Set task details in modal inputs
-  
+
+  let  title = document.getElementById("edit-task-title-input")
+  let desc = document.getElementById("edit-task-desc-input")
+  let status = document.getElementById("edit-select-status")
+
+    title.value = task.title
+    desc.value = task.description
+    status.value = task.status
 
   // Get button elements from the task modal
-  let cancelEditBtn = document.getElementById("cancel-edit-btn")
   let deleteTaskBtn = document.getElementById("delete-task-btn")
   let saveTaskChangesBtn = document.getElementById("save-task-changes-btn")
 
 
   // Call saveTaskChanges upon click of Save Changes button
- saveTaskChangesBtn.addEventListener("click", () => {
-  saveTaskChanges()  
- })
+ saveTaskChangesBtn.addEventListener("click", () => saveTaskChanges())
 
  // Delete task using a helper function and close the task modal
- 
+  deleteTaskBtn.addEventListener( "click", () => {
+  deleteTask();
+  toggleModal(false, elements.editTaskModal)
+  })
 
   toggleModal(true, elements.editTaskModal); // Show the edit task modal
 }
@@ -272,7 +285,7 @@ function saveTaskChanges(taskId) {
  
 
   // Close the modal and refresh the UI to reflect the changes
-
+  toggleModal(true, elements.editTaskModal)
   refreshTasksUI();
 }
 
