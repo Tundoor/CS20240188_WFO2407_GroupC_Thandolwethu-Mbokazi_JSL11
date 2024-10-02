@@ -229,7 +229,15 @@ function addTask(event) {
 // toggles the sideBar
 function toggleSidebar(show) {
      let sideBar = document.getElementById("side-bar-div")
-     sideBar.style.display = show ? "block" : "none"
+     if (show) {
+      document.getElementById("show-side-bar-btn").style.display = "none"
+      sideBar.style.display = "block"
+      
+     } else {
+      sideBar.style.display = "none"
+      document.getElementById("show-side-bar-btn").style.display = "block"
+     }
+    
      
      
 }
