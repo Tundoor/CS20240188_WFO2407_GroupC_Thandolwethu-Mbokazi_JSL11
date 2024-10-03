@@ -17,6 +17,8 @@ function initializeData() {
   }
 }
 
+initializeData()
+
 
 // TASK: Get elements from the DOM
 const elements = {
@@ -274,15 +276,15 @@ function openEditTaskModal(task) {
 
 
   // Call saveTaskChanges upon click of Save Changes button
- saveTaskChangesBtn.addEventListener("click", () => saveTaskChanges(task.id))
+ saveTaskChangesBtn.onclick = () => saveTaskChanges(task.id)
 
  // Delete task using a helper function and close the task modal
-  deleteTaskBtn.addEventListener( "click", () => {
+  deleteTaskBtn.onclick = () => {
   deleteTask(task.id);
   refreshTasksUI()
   toggleModal(false, elements.editTaskModal)
 
-  })
+  }
 
   toggleModal(true, elements.editTaskModal); // Show the edit task modal
 }
@@ -311,7 +313,10 @@ function saveTaskChanges(taskId) {
   toggleModal(false, elements.editTaskModal)
   refreshTasksUI();
 }
-
+//////////////////////////////////////////////////////////////////////////////
+ document.getElementById('edit-board-btn').addEventListener("click", () => {
+    alert("Would you like to reset")
+ })
 // /*************************************************************************************************************************************************/
 
 document.addEventListener('DOMContentLoaded', function() {
