@@ -216,7 +216,11 @@ function addTask(event) {
            'board' :  activeBoard
 
            };
-
+    
+    if ( task.title === "") {
+            alert("Please Add Title")
+            return
+          }
     
     const newTask = createNewTask(task);
     if (newTask) {
@@ -305,6 +309,11 @@ function saveTaskChanges(taskId) {
  }
 
  console.log(updatedTaskDetails)
+
+ if ( updatedTaskDetails.title === "") {
+  alert("Please Add Title")
+  return
+}
 
   // Update task using a hlper functoin
  patchTask(taskId, updatedTaskDetails)
