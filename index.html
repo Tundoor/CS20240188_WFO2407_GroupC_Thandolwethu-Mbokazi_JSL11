@@ -17,26 +17,30 @@
 <body>
     <!-- Navigation Sidebar: Contains the logo, navigation links for boards, and theme toggle. -->
     <nav class="side-bar" id="side-bar-div">
+        <!-- This is the logo in the sidepanel -->
         <div id="side-logo-div">
             <img id="logo" src="./assets/logo-dark.svg" alt="logo-dark">
         </div>
-
+              <!-- this is the roadmap and launch thing -->
         <div class="boards-nav-links-div" id="boards-nav-links-div">
             <h4 id="headline-sidepanel">ALL BOARDS</h4>
         </div>
         <div class="side-bar-bottom">
+            <!-- This has to do with the themes -->
             <div class="toggle-div">
                 <img src="./assets/icon-dark-theme.svg" id="icon-dark" alt="icon-dark-theme">
                 <input type="checkbox" id="switch" />
                 <label for="switch" id="label-checkbox-theme"></label>
                 <img src="./assets/icon-light-theme.svg" id="icon-light" alt="icon-light-theme">
             </div>
+             <!-- This closes the sidebar when it is open. -->
             <div class="hide-side-bar-div">
                 <img src="./assets/icon-hide-sidebar.svg" alt="icon-hide-sidebar">
                 <button id="hide-side-bar-btn">Hide Sidebar</button>
             </div>
         </div>
     </nav>
+     <!-- This button opens the sidebar when it is closed.  -->
     <button id="show-side-bar-btn">
         <img src="./assets/icon-show-sidebar.svg" alt="icon-show-sidebar">
     </button>
@@ -51,12 +55,16 @@
                     <img src="./assets/icon-chevron-down.svg" alt="icon-chevron-down" class="icon-chevron-down" id="dropDownIcon">
                 </button>
             </div>
-            <button id="add-new-task-btn" class="primary-btn">+ Add New Task</button>
+              <!-- This is the button that opens the createTaskModal -->
+            <button id="add-new-task-btn" class="primary-btn">+ Add New Task</button>     
             <button class="edit-btn" id="edit-board-btn">
+                <!-- Three dots allow you to delete a full board -->
                 <p id="three-dots-icon">&#8942;</p>
             </button>
             <div id="editBoardDiv" class="editBtnsDiv">
-                <button class="editBtns" id="deleteBoardBtn">Delete Board</button>
+                <p class="resetQuery">Do you want to reset page to default?</p>
+                <button class="resetEdit" id="resetBtn">Reset Page</button>
+                <button class = "cancelEdit" id="cancelEdit">Cancel</button>
             </div>
         </header>
 
@@ -98,13 +106,16 @@
         <h4 class="modal-title">Add New Task</h4>
         <div class="input-div">
             <label class="label-modal-window" id="modal-title-input" for="title-input">Title</label>
+            <!-- Title for newTaskModal -->
             <input type="text" class="modal-input" id="title-input" placeholder="e.g. Take a little break">
         </div>
         <div class="input-div">
             <label class="label-modal-window" id="modal-desc-input" for="desc-input">Description</label>
+            <!-- Desc for newTaskModal -->
             <textarea name="description" id="desc-input" placeholder="e.g. Pet your dog, have a cup of coffee, dance to your favourite song and come back to conquer this challenge. 💪🏾"></textarea>
         </div>
         <div class="input-div">
+            <!-- This is the dropDown for addNewTask modal -->
             <label class="label-modal-window" id="modal-select-status" for="select-status">Status</label>
             <select name="status" id="select-status">
                 <option value="todo">todo</option>
@@ -122,10 +133,12 @@
     <div class="edit-task-modal-window">
         <form id="edit-task-form">
             <div class="edit-task-div" id="edit-task-header">
+                <!-- title for existing card -->
                 <input type="text" id="edit-task-title-input" class="task-title-input" placeholder="Task Title">
                 <button id="edit-btn" class="edit-btn"></button>
             </div>
             <div class="edit-task-div">
+                <!-- desc for existing task modal -->
                 <textarea id="edit-task-desc-input" class="edit-task-description-input" placeholder="Task Description"></textarea>
             </div>
             <div class="edit-task-div">

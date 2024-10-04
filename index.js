@@ -17,8 +17,6 @@ function initializeData() {
   }
 }
 
-initializeData()
-
 
 // TASK: Get elements from the DOM
 const elements = {
@@ -308,8 +306,6 @@ function saveTaskChanges(taskId) {
            'board' : activeBoard
  }
 
- console.log(updatedTaskDetails)
-
  if ( updatedTaskDetails.title === "") {
   alert("Please Add Title")
   return
@@ -324,8 +320,19 @@ function saveTaskChanges(taskId) {
 }
 //////////////////////////////////////////////////////////////////////////////
  document.getElementById('edit-board-btn').addEventListener("click", () => {
-    alert("Would you like to reset")
+    document.getElementById('editBoardDiv').style.display = "Block"
  })
+
+ document.getElementById("cancelEdit").addEventListener("click", () => {
+  document.getElementById('editBoardDiv').style.display = "none"
+})
+
+document.getElementById("resetBtn").addEventListener("click", () => {
+  localStorage.clear();
+  initializeData();
+  refreshTasksUI();
+  document.getElementById('editBoardDiv').style.display = "none"
+})
 // /*************************************************************************************************************************************************/
 
 document.addEventListener('DOMContentLoaded', function() {
